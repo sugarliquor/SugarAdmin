@@ -1,0 +1,48 @@
+2019-02-21 13:41:11.509 [restartedMain] INFO  net.sppan.base.Application - Starting Application on ZJS-20170104XGB with PID 1468 (E:\erpSugar\SPPanAdmin-master\target\classes started by Administrator in E:\erpSugar\SPPanAdmin-master)
+2019-02-21 13:41:11.520 [restartedMain] DEBUG net.sppan.base.Application - Running with Spring Boot v1.5.2.RELEASE, Spring v4.3.7.RELEASE
+2019-02-21 13:41:11.520 [restartedMain] INFO  net.sppan.base.Application - No active profile set, falling back to default profiles: default
+2019-02-21 13:41:12.052 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
+2019-02-21 13:41:16.721 [restartedMain] DEBUG org.hibernate.SQL - select resource0_.id as id1_1_, resource0_.create_time as create_t2_1_, resource0_.description as descript3_1_, resource0_.icon as icon4_1_, resource0_.is_hide as is_hide5_1_, resource0_.level as level6_1_, resource0_.name as name7_1_, resource0_.parent_id as parent_13_1_, resource0_.sort as sort8_1_, resource0_.source_key as source_k9_1_, resource0_.source_url as source_10_1_, resource0_.type as type11_1_, resource0_.update_time as update_12_1_ from tb_resource resource0_
+2019-02-21 13:41:17.105 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service Tomcat
+2019-02-21 13:41:17.106 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+2019-02-21 13:41:17.235 [localhost-startStop-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-02-21 13:41:17.780 [restartedMain] DEBUG net.sf.ehcache.config.ConfigurationFactory - Configuring ehcache from InputStream
+2019-02-21 13:41:17.843 [restartedMain] DEBUG net.sf.ehcache.config.BeanHandler - Ignoring ehcache attribute xmlns:xsi
+2019-02-21 13:41:17.844 [restartedMain] DEBUG net.sf.ehcache.config.BeanHandler - Ignoring ehcache attribute xsi:noNamespaceSchemaLocation
+2019-02-21 13:41:17.845 [restartedMain] DEBUG net.sf.ehcache.config.DiskStoreConfiguration - Disk Store Path: C:\Users\ADMINI~1.ZJS\AppData\Local\Temp\
+2019-02-21 13:41:17.862 [restartedMain] DEBUG net.sf.ehcache.CacheManager - Creating new CacheManager with Configuration Object
+2019-02-21 13:41:17.863 [restartedMain] DEBUG net.sf.ehcache.util.PropertyUtil - propertiesString is null.
+2019-02-21 13:41:17.870 [restartedMain] DEBUG net.sf.ehcache.config.ConfigurationHelper - No CacheManagerEventListenerFactory class specified. Skipping...
+2019-02-21 13:41:17.906 [restartedMain] DEBUG net.sf.ehcache.Cache - No BootstrapCacheLoaderFactory class specified. Skipping...
+2019-02-21 13:41:17.906 [restartedMain] DEBUG net.sf.ehcache.Cache - CacheWriter factory not configured. Skipping...
+2019-02-21 13:41:17.906 [restartedMain] DEBUG net.sf.ehcache.config.ConfigurationHelper - No CacheExceptionHandlerFactory class specified. Skipping...
+2019-02-21 13:41:17.911 [restartedMain] DEBUG net.sf.ehcache.Cache - No BootstrapCacheLoaderFactory class specified. Skipping...
+2019-02-21 13:41:17.911 [restartedMain] DEBUG net.sf.ehcache.Cache - CacheWriter factory not configured. Skipping...
+2019-02-21 13:41:17.912 [restartedMain] DEBUG net.sf.ehcache.config.ConfigurationHelper - No CacheExceptionHandlerFactory class specified. Skipping...
+2019-02-21 13:41:17.912 [restartedMain] WARN  net.sf.ehcache.config.CacheConfiguration - Configuration problem for cache resourceCache: MaxEntriesLocalHeap equal or greater than MaxEntriesLocalDisk. This will result in useless disk storage.
+2019-02-21 13:41:17.921 [restartedMain] DEBUG net.sf.ehcache.DiskStorePathManager - Using diskstore path C:\Users\ADMINI~1.ZJS\AppData\Local\Temp
+2019-02-21 13:41:17.922 [restartedMain] DEBUG net.sf.ehcache.DiskStorePathManager - Holding exclusive lock on C:\Users\ADMINI~1.ZJS\AppData\Local\Temp\.ehcache-diskstore.lock
+2019-02-21 13:41:17.923 [restartedMain] DEBUG net.sf.ehcache.store.disk.DiskStorageFactory - Failed to delete file resource%0043ache.index
+2019-02-21 13:41:17.932 [restartedMain] DEBUG net.sf.ehcache.store.disk.DiskStorageFactory - Matching data file missing (or empty) for index file. Deleting index file C:\Users\ADMINI~1.ZJS\AppData\Local\Temp\resource%0043ache.index
+2019-02-21 13:41:17.933 [restartedMain] DEBUG net.sf.ehcache.store.disk.DiskStorageFactory - Failed to delete file resource%0043ache.index
+2019-02-21 13:41:17.967 [restartedMain] DEBUG net.sf.ehcache.statistics.extended.ExtendedStatisticsImpl - Mocking Pass-Through Statistic: LOCAL_OFFHEAP_SIZE
+2019-02-21 13:41:17.968 [restartedMain] DEBUG net.sf.ehcache.statistics.extended.ExtendedStatisticsImpl - Mocking Pass-Through Statistic: LOCAL_OFFHEAP_SIZE_BYTES
+2019-02-21 13:41:17.969 [restartedMain] DEBUG net.sf.ehcache.statistics.extended.ExtendedStatisticsImpl - Mocking Pass-Through Statistic: WRITER_QUEUE_LENGTH
+2019-02-21 13:41:17.969 [restartedMain] DEBUG net.sf.ehcache.statistics.extended.ExtendedStatisticsImpl - Mocking Pass-Through Statistic: REMOTE_SIZE
+2019-02-21 13:41:17.969 [restartedMain] DEBUG net.sf.ehcache.statistics.extended.ExtendedStatisticsImpl - Mocking Pass-Through Statistic: LAST_REJOIN_TIMESTAMP
+2019-02-21 13:41:17.976 [restartedMain] DEBUG net.sf.ehcache.statistics.extended.ExtendedStatisticsImpl - Mocking Operation Statistic: OFFHEAP_GET
+2019-02-21 13:41:17.977 [restartedMain] DEBUG net.sf.ehcache.statistics.extended.ExtendedStatisticsImpl - Mocking Operation Statistic: OFFHEAP_PUT
+2019-02-21 13:41:17.977 [restartedMain] DEBUG net.sf.ehcache.statistics.extended.ExtendedStatisticsImpl - Mocking Operation Statistic: OFFHEAP_REMOVE
+2019-02-21 13:41:17.978 [restartedMain] DEBUG net.sf.ehcache.statistics.extended.ExtendedStatisticsImpl - Mocking Operation Statistic: XA_COMMIT
+2019-02-21 13:41:17.978 [restartedMain] DEBUG net.sf.ehcache.statistics.extended.ExtendedStatisticsImpl - Mocking Operation Statistic: XA_ROLLBACK
+2019-02-21 13:41:17.978 [restartedMain] DEBUG net.sf.ehcache.statistics.extended.ExtendedStatisticsImpl - Mocking Operation Statistic: XA_RECOVERY
+2019-02-21 13:41:17.978 [restartedMain] DEBUG net.sf.ehcache.statistics.extended.ExtendedStatisticsImpl - Mocking Operation Statistic: CLUSTER_EVENT
+2019-02-21 13:41:17.978 [restartedMain] DEBUG net.sf.ehcache.statistics.extended.ExtendedStatisticsImpl - Mocking Operation Statistic: NONSTOP
+2019-02-21 13:41:17.981 [restartedMain] DEBUG net.sf.ehcache.Cache - Initialised cache: resourceCache
+2019-02-21 13:41:17.981 [restartedMain] DEBUG net.sf.ehcache.config.ConfigurationHelper - CacheDecoratorFactory not configured. Skipping for 'resourceCache'.
+2019-02-21 13:41:17.981 [restartedMain] DEBUG net.sf.ehcache.config.ConfigurationHelper - CacheDecoratorFactory not configured for defaultCache. Skipping for 'resourceCache'.
+2019-02-21 13:41:19.032 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-80"]
+2019-02-21 13:41:19.039 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler [http-nio-80]
+2019-02-21 13:41:19.143 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2019-02-21 13:41:19.159 [restartedMain] INFO  net.sppan.base.Application - Started Application in 8.133 seconds (JVM running for 9.118)
+2019-02-21 13:41:19.160 [restartedMain] DEBUG net.sppan.base.Application - 启动成功
