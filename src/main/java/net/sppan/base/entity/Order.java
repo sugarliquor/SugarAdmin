@@ -96,6 +96,19 @@ public class Order extends BaseEntity {
 	 */
 	@JSONField(format = "yyyy-MM-dd HH:mm:ss")
 	private Date updateTime;
+	
+	/**
+	 * 删除标识
+	 */
+	private Integer yn;
+	
+	public Integer getYn() {
+		return yn;
+	}
+
+	public void setYn(Integer yn) {
+		this.yn = yn;
+	}
 
 	public Integer getId() {
 		return id;

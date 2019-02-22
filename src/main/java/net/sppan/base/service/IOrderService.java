@@ -4,7 +4,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
 import net.sppan.base.entity.Order;
-import net.sppan.base.entity.User;
 import net.sppan.base.service.support.IBaseService;
 
 /**
@@ -26,9 +25,9 @@ public interface IOrderService extends IBaseService<Order, Integer> {
 
 	/**
 	 * 增加或者修改用户
-	 * @param user
+	 * @param order
 	 */
-//	void saveOrUpdate(User user);
+	void saveOrUpdate(Order order);
 
 	/**
 	 * 给用户分配角色

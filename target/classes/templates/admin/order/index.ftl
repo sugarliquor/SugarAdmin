@@ -96,12 +96,14 @@
 			    //是否启用查询  
 			    search: true,
 			    //是否启用详细信息视图
-			    detailView:true,
-			    detailFormatter:detailFormatter,
+			    detailView:false,
+			    //detailFormatter:detailFormatter,
 			    //表示服务端请求  
 			    sidePagination: "server",
 			    //设置为undefined可以获取pageNumber，pageSize，searchText，sortName，sortOrder  
-			    //设置为limit可以获取limit, offset, search, sort, order  
+			    //设置为limit可以获取limit, offset, search, sort, order 
+			    sortOrder : "desc", 
+			    sortName : "id", 
 			    queryParamsType: "undefined",
 			    //json数据解析
 			    responseHandler: function(res) {
@@ -178,7 +180,7 @@
         	      title: '单据添加',
         	      shadeClose: true,
         	      shade: false,
-        	      area: ['893px', '600px'],
+        	      area: ['800px', '600px'],
         	      content: '${ctx!}/admin/order/add',
         	      end: function(index){
         	    	  $('#table_list').bootstrapTable("refresh");
@@ -203,7 +205,13 @@
         
         function detailFormatter(index, row) {
 	        var html = [];
-	        html.push('<p><b>描述:</b> ' + row.description + '</p>');
+	        var aa;
+	        if(row.yn == 0){
+	        	aa = "有效";
+	        }else{
+	        	aa = "作废";
+	        }
+	        html.push('<p><b>描述:</b> ' + aa + '</p>');
 	        return html.join('');
 	    }
     </script>
