@@ -65,6 +65,16 @@
                                <a class="J_menuItem" href="${ctx!}/admin/order/index">开单管理</a>
                             </li>
                          </@shiro.hasPermission>
+                         <@shiro.hasPermission name="system:stock:index">
+                            <li>
+                               <a class="J_menuItem" href="${ctx!}/admin/stock/index">存货管理</a>
+                            </li>
+                         </@shiro.hasPermission>
+                         <@shiro.hasPermission name="system:purStock:index">
+                            <li>
+                               <a class="J_menuItem" href="${ctx!}/admin/purStock/index">进货管理</a>
+                            </li>
+                         </@shiro.hasPermission>
                          <@shiro.hasPermission name="system:user:index">
                             <li>
                                <a class="J_menuItem" href="${ctx!}/admin/user/index">用户管理</a>

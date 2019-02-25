@@ -88,13 +88,13 @@ public class Order extends BaseEntity {
 	/**
 	 * 制单时间
 	 */
-	@JSONField(format = "yyyy-MM-dd HH:mm:ss")
+	@JSONField(format = "yyyy-MM-dd")
 	private Date singleTime;
 
 	/**
 	 * 更新时间
 	 */
-	@JSONField(format = "yyyy-MM-dd HH:mm:ss")
+	@JSONField(format = "yyyy-MM-dd")
 	private Date updateTime;
 	
 	/**
@@ -134,14 +134,6 @@ public class Order extends BaseEntity {
 		this.address = address;
 	}
 
-	public String getContactNumber() {
-		return contactNumber;
-	}
-
-	public void setContactNumber(String contactNumber) {
-		this.contactNumber = contactNumber;
-	}
-
 	public String getIntroducer() {
 		return introducer;
 	}
@@ -166,22 +158,6 @@ public class Order extends BaseEntity {
 		this.installationTime = installationTime;
 	}
 
-	public String getFrontMoney() {
-		return frontMoney;
-	}
-
-	public void setFrontMoney(String frontMoney) {
-		this.frontMoney = frontMoney;
-	}
-
-	public String getTotal() {
-		return total;
-	}
-
-	public void setTotal(String total) {
-		this.total = total;
-	}
-
 	public String getSinglePerson() {
 		return singlePerson;
 	}
@@ -204,6 +180,30 @@ public class Order extends BaseEntity {
 
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
+	public String getFrontMoney() {
+		return frontMoney;
+	}
+
+	public void setFrontMoney(String frontMoney) {
+		this.frontMoney = frontMoney;
+	}
+
+	public String getTotal() {
+		return total;
+	}
+
+	public void setTotal(String total) {
+		this.total = total;
 	}
 
 }

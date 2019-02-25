@@ -12,9 +12,6 @@ import net.sppan.base.entity.Order;
 @Repository
 public interface IOrderDao extends IBaseDao<Order, Integer> {
 
-//	Order findByUserName(String username);
-
-
 	@Query(value="select o from Order o  where o.orderNo like %:nn% or o.address like %:nn%"
 			+ " or o.contactNumber like %:nn% or o.introducer like %:nn% or o.installer like %:nn% "
 			+ " or o.frontMoney like %:nn% or o.total like %:nn% or o.singlePerson like %:nn% ")

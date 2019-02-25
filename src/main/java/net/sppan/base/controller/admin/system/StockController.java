@@ -13,41 +13,41 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.sppan.base.common.JsonResult;
 import net.sppan.base.controller.BaseController;
-import net.sppan.base.entity.Order;
-import net.sppan.base.service.IOrderService;
+import net.sppan.base.entity.Stock;
+import net.sppan.base.service.IStockService;
 
 @Controller
-@RequestMapping("/admin/order")
-public class OrderController extends BaseController {
+@RequestMapping("/admin/stock")
+public class StockController extends BaseController {
 
 	@Autowired
-	private IOrderService orderService;
+	private IStockService stockService;
 
 	@RequestMapping(value = { "/", "/index" })
 	public String index() {
-		return "admin/order/index";
+		return "admin/stock/index";
 	}
 
 	@RequestMapping(value = { "/list" })
 	@ResponseBody
-	public Page<Order> list(
+	public Page<Stock> list(
 			@RequestParam(value="searchText",required=false) String searchText
 			) {
 		
-		Page<Order> page = orderService.findAllByLike(searchText, getPageRequest());
+		Page<Stock> page = stockService.findAllByLike(searchText, getPageRequest());
 		return page;
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String add(ModelMap map) {
-		return "admin/order/form";
+		return "admin/stock/form";
 	}
 	
 	@RequestMapping(value= {"/edit"} ,method = RequestMethod.POST)
 	@ResponseBody
-	public JsonResult edit(Order order,ModelMap map){
+	public JsonResult edit(Stock stock,ModelMap map){
 		try {
-			orderService.saveOrUpdate(order);
+			stockService.saveOrUpdate(stock);
 		} catch (Exception e) {
 			return JsonResult.failure(e.getMessage());
 		}
@@ -56,9 +56,9 @@ public class OrderController extends BaseController {
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String edit(@PathVariable Integer id,ModelMap map) {
-		Order order = orderService.find(id);
-		map.put("order", order);
-		return "admin/order/form";
+		Stock stock = stockService.find(id);
+		map.put("stock", stock);
+		return "admin/stock/form";
 	}
 	
 	
@@ -66,7 +66,7 @@ public class OrderController extends BaseController {
 	@ResponseBody
 	public JsonResult delete(@PathVariable Integer id,ModelMap map) {
 		try {
-			orderService.delete(id);
+			stockService.delete(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JsonResult.failure(e.getMessage());

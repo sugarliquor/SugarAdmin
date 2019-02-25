@@ -3,7 +3,7 @@ package net.sppan.base.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-import net.sppan.base.entity.Order;
+import net.sppan.base.entity.PurStock;
 import net.sppan.base.service.support.IBaseService;
 
 /**
@@ -14,13 +14,13 @@ import net.sppan.base.service.support.IBaseService;
  * @author SPPan
  * @since 2019-1-24
  */
-public interface IOrderService extends IBaseService<Order, Integer> {
+public interface IPurStockService extends IBaseService<PurStock, Integer> {
 
 	/**
 	 * 增加或者修改用户
 	 * @param order
 	 */
-	void saveOrUpdate(Order order);
+	void saveOrUpdate(PurStock stock);
 
 	/**
 	 * 根据关键字获取分页
@@ -28,6 +28,6 @@ public interface IOrderService extends IBaseService<Order, Integer> {
 	 * @param pageRequest
 	 * @return
 	 */
-	Page<Order> findAllByLike(String searchText, PageRequest pageRequest);
+	Page<PurStock> findAllByLike(String searchText, PageRequest pageRequest);
 
 }
