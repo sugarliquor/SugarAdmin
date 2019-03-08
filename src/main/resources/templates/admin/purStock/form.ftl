@@ -27,6 +27,12 @@
                     <div class="ibox-content">
                         <form class="form-horizontal m-t" id="frm" method="post" action="${ctx!}/admin/purStock/edit">
                         	<input type="hidden" id="id" name="id" value="${purStock.id}">
+                        	<div class="form-group">
+                                <label class="col-sm-3 control-label">订货时间：</label>
+                                <div class="col-sm-8">
+                                	<input id="orderTime" name="orderTime" readonly="readonly" class="laydate-icon form-control layer-date" value="${purStock.orderTime}">
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">进货时间：</label>
                                 <div class="col-sm-8">
@@ -140,6 +146,10 @@
     <script type="text/javascript">
     $(document).ready(function () {
 	  	//外部js调用
+	  	laydate({
+	        elem: '#orderTime', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
+	        event: 'focus' //响应事件。如果没有传入event，则按照默认的click
+	    });
 	    laydate({
 	        elem: '#purchasTime', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
 	        event: 'focus' //响应事件。如果没有传入event，则按照默认的click
@@ -159,6 +169,10 @@
 	  	
 	    $("#frm").validate({
     	    rules: {
+    	    	orderTime: {
+    	    	date:true,
+    	        required: true
+    	      },
     	    	purchasTime: {
     	    	date:true,
     	        required: true

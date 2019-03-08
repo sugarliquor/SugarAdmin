@@ -15,7 +15,7 @@ import net.sppan.base.entity.support.BaseEntity;
 
 /**
  * <p>
- * 出货表
+ * 进货表
  * </p>
  *
  * @author SPPan
@@ -37,6 +37,12 @@ public class PurStock extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
 	private Integer id;
+	
+	/**
+	 * 订货时间
+	 */
+	@JSONField(format = "yyyy-MM-dd")
+	private Date orderTime;
 
 	/**
 	 * 进货时间
@@ -129,6 +135,14 @@ public class PurStock extends BaseEntity {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Date getOrderTime() {
+		return orderTime;
+	}
+
+	public void setOrderTime(Date orderTime) {
+		this.orderTime = orderTime;
 	}
 
 	public Date getPurchasTime() {

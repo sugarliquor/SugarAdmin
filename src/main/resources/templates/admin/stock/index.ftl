@@ -96,8 +96,8 @@
 			    //是否启用查询  
 			    search: true,
 			    //是否启用详细信息视图
-			    detailView:false,
-			    //detailFormatter:detailFormatter,
+			    detailView:true,
+			    detailFormatter:detailFormatter,
 			    //表示服务端请求  
 			    sidePagination: "server",
 			    //设置为undefined可以获取pageNumber，pageSize，searchText，sortName，sortOrder  
@@ -132,22 +132,6 @@
 			    },{
 			        title: "库存数量",
 			        field: "inventoryQuantity"
-			    },{
-			        title: "出货数量",
-			        field: "shippQuantity"
-			    },{
-			        title: "出货地址",
-			        field: "shippAddress"
-			    },{
-			        title: "用货人",
-			        field: "shipper"
-			    },{
-			        title: "出货时间",
-			        field: "shippTime",
-			        sortable: true
-			    },{
-			        title: "退回数量",
-			        field: "returnQuantity"
 			    },{
 			        title: "备注",
 			        field: "remarks"
@@ -211,13 +195,7 @@
         
         function detailFormatter(index, row) {
 	        var html = [];
-	        var aa;
-	        if(row.yn == 0){
-	        	aa = "有效";
-	        }else{
-	        	aa = "作废";
-	        }
-	        html.push('<p><b>描述:</b> ' + aa + '</p>');
+	        html.push('<p><b>出货数量:</b> ' + row.shippQuantity + ' , <b>出货地址:</b> ' + row.shippAddress + ', <b>出货人:</b> ' + row.shipper + ', <b>出货时间:</b> ' + row.shippTime + ', <b>退回数量:</b> ' + row.returnQuantity + '</p>');
 	        return html.join('');
 	    }
     </script>

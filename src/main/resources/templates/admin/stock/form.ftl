@@ -76,7 +76,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">用货人：</label>
+                                <label class="col-sm-3 control-label">出货人：</label>
                                 <div class="col-sm-8">
                                     <input id="shipper" name="shipper" class="form-control" type="text" value="${stock.shipper}">
                                 </div>

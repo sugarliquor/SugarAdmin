@@ -114,6 +114,10 @@
 			    },
 			    //数据列
 			    columns: [{
+			        title: "订货时间",
+			        field: "orderTime",
+			        sortable: true
+			    },{
 			        title: "进货时间",
 			        field: "purchasTime",
 			        sortable: true
