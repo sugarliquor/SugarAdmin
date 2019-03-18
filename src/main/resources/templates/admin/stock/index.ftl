@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 
     <title>存货列表</title>
     <meta name="keywords" content="">
@@ -19,7 +17,6 @@
 
     <link href="${ctx!}/assets/css/animate.css" rel="stylesheet">
     <link href="${ctx!}/assets/css/style.css?v=4.1.0" rel="stylesheet">
-
 
 </head>
 
@@ -50,6 +47,23 @@
 		                    </div>
 	                    </div>
                     </div>
+                    <!-- 明细 -->
+                    <div class="ibox-title">
+                        <h5>出货明细</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row row-lg">
+		                    <div class="col-sm-12">
+		                        <div class="example-wrap">
+		                            <div class="example">
+		                            	<table id="table_list_b"></table>
+		                            </div>
+		                        </div>
+		                        <!-- End Example Card View -->
+		                    </div>
+	                    </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -58,6 +72,7 @@
     <!-- 全局js -->
     <script src="${ctx!}/assets/js/jquery.min.js?v=2.1.4"></script>
     <script src="${ctx!}/assets/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="${ctx!}/assets/js/common.js"></script>
     
 	<!-- Bootstrap table -->
     <script src="${ctx!}/assets/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
@@ -96,8 +111,9 @@
 			    //是否启用查询  
 			    search: true,
 			    //是否启用详细信息视图
-			    detailView:true,
-			    detailFormatter:detailFormatter,
+			    detailView:false,
+			    //detailFormatter:detailFormatter,
+			    onClickRow:onClickRow,
 			    //表示服务端请求  
 			    sidePagination: "server",
 			    //设置为undefined可以获取pageNumber，pageSize，searchText，sortName，sortOrder  
@@ -143,7 +159,7 @@
 			        title: "操作",
 			        field: "empty",
                     formatter: function (value, row, index) {
-                    	var operateHtml = '<@shiro.hasPermission name="system:stock:edit"><button class="btn btn-primary btn-xs" type="button" onclick="edit(\''+row.id+'\')"><i class="fa fa-edit"></i>&nbsp;修改</button> &nbsp;</@shiro.hasPermission>';
+                    	var operateHtml = '<@shiro.hasPermission name="system:stock:add"><button class="btn btn-primary btn-xs" type="button" onclick="edit(\''+row.id+'\')"><i class="fa fa-plus"></i>&nbsp;添加出货明细</button> &nbsp;</@shiro.hasPermission>';
                     	operateHtml = operateHtml + '<@shiro.hasPermission name="system:stock:deleteBatch"><button class="btn btn-danger btn-xs" type="button" onclick="del(\''+row.id+'\')"><i class="fa fa-remove"></i>&nbsp;删除</button> &nbsp;</@shiro.hasPermission>';
                         return operateHtml;
                     }
@@ -154,11 +170,11 @@
         function edit(id){
         	layer.open({
         	      type: 2,
-        	      title: '单据修改',
+        	      title: '存货明细添加',
         	      shadeClose: true,
         	      shade: false,
-        	      area: ['893px', '600px'],
-        	      content: '${ctx!}/admin/stock/edit/' + id,
+        	      area: ['800px', '500px'],
+        	      content: '${ctx!}/admin/stockDetail/add/',
         	      end: function(index){
         	    	  $('#table_list').bootstrapTable("refresh");
        	    	  }
@@ -167,10 +183,10 @@
         function add(){
         	layer.open({
         	      type: 2,
-        	      title: '单据添加',
+        	      title: '存货添加',
         	      shadeClose: true,
         	      shade: false,
-        	      area: ['800px', '600px'],
+        	      area: ['800px', '500px'],
         	      content: '${ctx!}/admin/stock/add',
         	      end: function(index){
         	    	  $('#table_list').bootstrapTable("refresh");
@@ -193,10 +209,70 @@
        		});
         }
         
-        function detailFormatter(index, row) {
-	        var html = [];
-	        html.push('<p><b>出货数量:</b> ' + row.shippQuantity + ' , <b>出货地址:</b> ' + row.shippAddress + ', <b>出货人:</b> ' + row.shipper + ', <b>出货时间:</b> ' + row.shippTime + ', <b>退回数量:</b> ' + row.returnQuantity + '</p>');
-	        return html.join('');
+        //function detailFormatter(index, row) {
+	        //var html = [];
+	        //html.push('<p><b>出货数量:</b> ' + row.shippQuantity + ' , <b>出货地址:</b> ' + row.shippAddress + ', <b>出货人:</b> ' + row.shipper + ', <b>出货时间:</b> ' + row.shippTime + ', <b>退回数量:</b> ' + row.returnQuantity + '</p>');
+	        //return html.join('');
+	    //}
+        
+        function onClickRow(index, row) {
+        	$("#table_list_b").bootstrapTable('destroy');
+        	//初始化表格,动态从服务器加载数据  
+			$("#table_list_b").bootstrapTable({
+			    //使用get请求到服务器获取数据  
+			    method: "POST",
+			    //必须设置，不然request.getParameter获取不到请求参数
+			    contentType: "application/x-www-form-urlencoded",
+			    //获取数据的Servlet地址  
+			    url: "${ctx!}/admin/stockDetail/list?pId="+index.id,
+			    //表格显示条纹  
+			    striped: true,
+			    //启动分页  
+			    pagination: true,
+			    //每页显示的记录数  
+			    pageSize: 10,
+			    //当前第几页  
+			    pageNumber: 1,
+			    //记录数可选列表  
+			    pageList: [5, 10, 15, 20, 25],
+			    //是否启用查询  
+			    search: false,
+			    //是否启用详细信息视图
+			    detailView:false,
+			    //detailFormatter:detailFormatter,
+			    //表示服务端请求  
+			    sidePagination: "server",
+			    //设置为undefined可以获取pageNumber，pageSize，searchText，sortName，sortOrder  
+			    //设置为limit可以获取limit, offset, search, sort, order 
+			    sortOrder : "desc", 
+			    sortName : "id", 
+			    queryParamsType: "undefined",
+			    //json数据解析
+			    responseHandler: function(res) {
+			        return {
+			            "rows": res.content,
+			            "total": res.totalElements
+			        };
+			    },
+			    //数据列
+			    columns: [{
+			        title: "出货数量",
+			        field: "shippQuantity",
+			    },{
+			        title: "出货地址",
+			        field: "shippAddress"
+			    },{
+			        title: "出货人",
+			        field: "shipper",
+			    },{
+			        title: "出货时间",
+			        field: "shippTime",
+			        sortable: true
+			    },{
+			        title: "退回数量",
+			        field: "returnQuantity"
+			    }]
+			});
 	    }
     </script>
 

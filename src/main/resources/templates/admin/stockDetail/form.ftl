@@ -25,48 +25,37 @@
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <form class="form-horizontal m-t" id="frm" method="post" action="${ctx!}/admin/stock/edit">
-                        	<input type="hidden" id="id" name="id" value="${stock.id}">
+                        <form class="form-horizontal m-t" id="frm" method="post" action="${ctx!}/admin/stockDetail/edit">
+                        	<input type="hidden" id="id" name="id" value="${stockDetail.id}">
+                        	<input type="hidden" id="pId" name="pId" value="${stock.id}">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">到库时间：</label>
+                                <label class="col-sm-3 control-label">出货数量：</label>
                                 <div class="col-sm-8">
-                                	<input id="arrivaTime" name="arrivaTime" readonly="readonly" class="laydate-icon form-control layer-date" value="${stock.arrivaTime}">
+                                    <input id="shippQuantity" name="shippQuantity" class="form-control" type="text" value="${stockDetail.shippQuantity}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">进货厂家：</label>
+                                <label class="col-sm-3 control-label">出货地址：</label>
                                 <div class="col-sm-8">
-                                    <input id="incomManu" name="incomManu" class="form-control" type="text" value="${stock.incomManu}">
+                                    <input id="shippAddress" name="shippAddress" class="form-control" type="text" value="${stockDetail.shippAddress}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">名称及规格：</label>
+                                <label class="col-sm-3 control-label">出货人：</label>
                                 <div class="col-sm-8">
-                                    <input id="nameSpeci" name="nameSpeci" class="form-control" type="text" value="${stock.nameSpeci}">
+                                    <input id="shipper" name="shipper" class="form-control" type="text" value="${stockDetail.shipper}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">批号：</label>
+                                <label class="col-sm-3 control-label">出货时间：</label>
                                 <div class="col-sm-8">
-                                    <input id="batchNumber" name="batchNumber" class="form-control" type="text" value="${stock.batchNumber}">
+                                	<input id="shippTime" name="shippTime" readonly="readonly" class="laydate-icon form-control layer-date" value="${stockDetail.shippTime}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">总数量：</label>
+                                <label class="col-sm-3 control-label">退回数量：</label>
                                 <div class="col-sm-8">
-                                    <input id="totalQuantity" name="totalQuantity" class="form-control" type="text" value="${stock.totalQuantity}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">库存数量：</label>
-                                <div class="col-sm-8">
-                                	<input id="inventoryQuantity" name="inventoryQuantity" class="form-control" type="text" value="${stock.inventoryQuantity}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">备注：</label>
-                                <div class="col-sm-8">
-                                    <input id="remarks" name="remarks" class="form-control" type="text" value="${stock.remarks}">
+                                    <input id="returnQuantity" name="returnQuantity" class="form-control" type="text" value="${stockDetail.returnQuantity}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -99,41 +88,35 @@
     $(document).ready(function () {
 	  	//外部js调用
 	    laydate({
-	        elem: '#arrivaTime', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
+	        elem: '#shippTime', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
 	        event: 'focus' //响应事件。如果没有传入event，则按照默认的click
 	    });
-	  	
+	    //alert(document.getElementById("pId").value);
 	    $("#frm").validate({
     	    rules: {
-    	    	arrivaTime: {
-    	    	date:true,
-    	        required: true
-    	      },
-    	      	incomManu: {
-    	        required: true
-    	      },
-    	      	nameSpeci: {
-    	        required: true
-    	      },
-    	      	batchNumber: {
-    	        required: true
-    	      },
-    	      	totalQuantity: {
-    	        required: true
-    	      },
-    	      	inventoryQuantity: {
-    	        required: true
-    	      },
-    	      	remarks: {
-    	        required: true
-    	      }
+    	    	shippQuantity: {
+       	        required: true
+       	      },
+       	      	shippAddress: {
+       	        required: true
+       	      },
+       	      	shipper: {
+       	        required: true
+       	      },
+       	      	shippTime: {
+       	      	date:true,
+       	        required: true
+       	      },
+       	      	returnQuantity: {
+       	        required: true
+       	      }
     	    },
     	    messages: {},
     	    submitHandler:function(form){
     	    	$.ajax({
    	    		   type: "POST",
    	    		   dataType: "json",
-   	    		   url: "${ctx!}/admin/stock/edit",
+   	    		   url: "${ctx!}/admin/stockDetail/edit",
    	    		   data: $(form).serialize(),
    	    		   success: function(msg){
 	   	    			layer.msg(msg.message, {time: 2000},function(){
