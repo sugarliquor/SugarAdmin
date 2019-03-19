@@ -168,6 +168,7 @@
         });
         
         function edit(id){
+        	sessionStorage.setItem("pId", id);
         	layer.open({
         	      type: 2,
         	      title: '存货明细添加',
@@ -177,6 +178,7 @@
         	      content: '${ctx!}/admin/stockDetail/add/',
         	      end: function(index){
         	    	  $('#table_list').bootstrapTable("refresh");
+        	    	  $('#table_list_b').bootstrapTable("refresh");
        	    	  }
         	    });
         }
