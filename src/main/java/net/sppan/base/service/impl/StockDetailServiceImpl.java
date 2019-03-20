@@ -3,8 +3,10 @@ package net.sppan.base.service.impl;
 
 import net.sppan.base.dao.IStockDetailDao;
 import net.sppan.base.dao.support.IBaseDao;
+import net.sppan.base.entity.Stock;
 import net.sppan.base.entity.StockDetail;
 import net.sppan.base.service.IStockDetailService;
+import net.sppan.base.service.IStockService;
 import net.sppan.base.service.support.impl.BaseServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,21 +28,27 @@ public class StockDetailServiceImpl extends BaseServiceImpl<StockDetail, Integer
 	@Autowired
 	private IStockDetailDao stockDetailDao;
 	
+	@Autowired
+	private IStockService iStockService;
+	
 	@Override
 	public IBaseDao<StockDetail, Integer> getBaseDao() {
 		return this.stockDetailDao;
 	}
 
 	@Override
-	public void saveOrUpdate(StockDetail stock) {
-		if(stock.getId() != null){
+	public void saveOrUpdate(StockDetail stockDetail) {
+		if(stockDetail.getId() != null){
 //			Order dbOrder = find(order.getId());
 //			stock.setUpdateTime(new Date());
-			update(stock);
+			update(stockDetail);
 		}else{
-//			stock.setUpdateTime(new Date());
-//			stock.setYn(0);
-			save(stock);
+			save(stockDetail);
+			//更新存货管理表
+			Stock stock = iStockService.find(stockDetail.getpId());
+			stock.setInventoryQuantity(stock.getInventoryQuantity()-stockDetail.getShippQuantity()+stockDetail.getReturnQuantity());
+			iStockService.update(stock);
+			
 		}
 	}
 	

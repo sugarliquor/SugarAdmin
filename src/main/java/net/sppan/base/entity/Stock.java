@@ -62,39 +62,13 @@ public class Stock extends BaseEntity {
 	/**
 	 * 总数量
 	 */
-	private String totalQuantity;
+	private int totalQuantity;
 
 	/**
 	 * 库存数量
 	 */
-	private String inventoryQuantity;
+	private int inventoryQuantity;
 
-	/**
-	 * 出货数量
-	 */
-	private String shippQuantity;
-
-	/**
-	 * 出货地址
-	 */
-	private String shippAddress;
-
-	/**
-	 * 用货人
-	 */
-	private String shipper;
-
-	/**
-	 * 出货时间
-	 */
-	@JSONField(format = "yyyy-MM-dd")
-	private Date shippTime;
-	
-	/**
-	 * 退回数量
-	 */
-	private String returnQuantity;
-	
 	/**
 	 * 备注
 	 */
@@ -151,60 +125,20 @@ public class Stock extends BaseEntity {
 		this.batchNumber = batchNumber;
 	}
 
-	public String getTotalQuantity() {
+	public Integer getTotalQuantity() {
 		return totalQuantity;
 	}
 
-	public void setTotalQuantity(String totalQuantity) {
+	public void setTotalQuantity(Integer totalQuantity) {
 		this.totalQuantity = totalQuantity;
 	}
 
-	public String getInventoryQuantity() {
+	public Integer getInventoryQuantity() {
 		return inventoryQuantity;
 	}
 
-	public void setInventoryQuantity(String inventoryQuantity) {
+	public void setInventoryQuantity(Integer inventoryQuantity) {
 		this.inventoryQuantity = inventoryQuantity;
-	}
-
-	public String getShippQuantity() {
-		return shippQuantity;
-	}
-
-	public void setShippQuantity(String shippQuantity) {
-		this.shippQuantity = shippQuantity;
-	}
-
-	public String getShippAddress() {
-		return shippAddress;
-	}
-
-	public void setShippAddress(String shippAddress) {
-		this.shippAddress = shippAddress;
-	}
-
-	public String getShipper() {
-		return shipper;
-	}
-
-	public void setShipper(String shipper) {
-		this.shipper = shipper;
-	}
-
-	public Date getShippTime() {
-		return shippTime;
-	}
-
-	public void setShippTime(Date shippTime) {
-		this.shippTime = shippTime;
-	}
-
-	public String getReturnQuantity() {
-		return returnQuantity;
-	}
-
-	public void setReturnQuantity(String returnQuantity) {
-		this.returnQuantity = returnQuantity;
 	}
 
 	public String getRemarks() {

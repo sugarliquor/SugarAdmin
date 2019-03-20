@@ -46,7 +46,7 @@ public class StockDetail extends BaseEntity {
 	/**
 	 * 出货数量
 	 */
-	private String shippQuantity;
+	private int shippQuantity;
 
 	/**
 	 * 出货地址
@@ -67,7 +67,7 @@ public class StockDetail extends BaseEntity {
 	/**
 	 * 退回数量
 	 */
-	private String returnQuantity;
+	private int returnQuantity;
 
 	public Integer getId() {
 		return id;
@@ -85,11 +85,11 @@ public class StockDetail extends BaseEntity {
 		this.pId = pId;
 	}
 
-	public String getShippQuantity() {
+	public int getShippQuantity() {
 		return shippQuantity;
 	}
 
-	public void setShippQuantity(String shippQuantity) {
+	public void setShippQuantity(int shippQuantity) {
 		this.shippQuantity = shippQuantity;
 	}
 
@@ -117,11 +117,12 @@ public class StockDetail extends BaseEntity {
 		this.shippTime = shippTime;
 	}
 
-	public String getReturnQuantity() {
+	public int getReturnQuantity() {
 		return returnQuantity;
 	}
 
-	public void setReturnQuantity(String returnQuantity) {
+	public void setReturnQuantity(int returnQuantity) {
 		this.returnQuantity = returnQuantity;
 	}
+
 }

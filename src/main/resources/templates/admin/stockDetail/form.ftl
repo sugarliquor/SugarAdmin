@@ -31,7 +31,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">出货数量：</label>
                                 <div class="col-sm-8">
-                                    <input id="shippQuantity" name="shippQuantity" class="form-control" type="text" value="${stockDetail.shippQuantity}">
+                                    <input id="shippQuantity" name="shippQuantity" class="form-control" type="number" value="${stockDetail.shippQuantity}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -55,7 +55,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">退回数量：</label>
                                 <div class="col-sm-8">
-                                    <input id="returnQuantity" name="returnQuantity" class="form-control" type="text" value="${stockDetail.returnQuantity}">
+                                    <input id="returnQuantity" name="returnQuantity" class="form-control" type="number" value="${stockDetail.returnQuantity}">
                                 </div>
                             </div>
                             <div class="form-group">

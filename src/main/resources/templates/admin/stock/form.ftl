@@ -54,13 +54,13 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">总数量：</label>
                                 <div class="col-sm-8">
-                                    <input id="totalQuantity" name="totalQuantity" class="form-control" type="text" value="${stock.totalQuantity}">
+                                    <input id="totalQuantity" name="totalQuantity" class="form-control" type="number" value="${stock.totalQuantity}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">库存数量：</label>
                                 <div class="col-sm-8">
-                                	<input id="inventoryQuantity" name="inventoryQuantity" class="form-control" type="text" value="${stock.inventoryQuantity}">
+                                	<input id="inventoryQuantity" name="inventoryQuantity" class="form-control" type="number" value="${stock.inventoryQuantity}">
                                 </div>
                             </div>
                             <div class="form-group">
