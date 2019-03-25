@@ -1,5 +1,7 @@
 package net.sppan.base.dao;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -15,5 +17,8 @@ public interface IStockDetailDao extends IBaseDao<StockDetail, Integer> {
 //	@Query(nativeQuery = true,value = "select o from tb_stock_detail o  where o.p_id = :pId")
 	@Query(value="select o from StockDetail o  where o.pId = :pId ")
 	Page<StockDetail> searchAll(Pageable pageable,@Param("pId") int pId);
+
+	@Query(value="select o from StockDetail o  where o.pId = :pId ")
+	List<StockDetail> searchAllByPid(@Param("pId") int pId);
 
 }

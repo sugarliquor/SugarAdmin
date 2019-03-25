@@ -1,5 +1,7 @@
 package net.sppan.base.service;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
@@ -29,5 +31,19 @@ public interface IStockDetailService extends IBaseService<StockDetail, Integer> 
 	 * @return
 	 */
 	Page<StockDetail> findAllByLike(int pId, PageRequest pageRequest);
+	
+	/**
+	 * 根据关键字获取分页
+	 * @param searchText
+	 * @param pageRequest
+	 * @return
+	 */
+	List<StockDetail> findAllByPid(int pId);
 
+	/**
+	 * 删除存货明细
+	 * @param id
+	 */
+	void deleteStockDetail(Integer id);
+	
 }

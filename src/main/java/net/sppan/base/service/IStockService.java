@@ -30,4 +30,10 @@ public interface IStockService extends IBaseService<Stock, Integer> {
 	 */
 	Page<Stock> findAllByLike(String searchText, PageRequest pageRequest);
 
+	/**
+	 * 根据id删除数据及明细
+	 * @param id
+	 */
+	void deleteData(Integer id);
+
 }

@@ -72,7 +72,6 @@
     <!-- 全局js -->
     <script src="${ctx!}/assets/js/jquery.min.js?v=2.1.4"></script>
     <script src="${ctx!}/assets/js/bootstrap.min.js?v=3.3.6"></script>
-    <script src="${ctx!}/assets/js/common.js"></script>
     
 	<!-- Bootstrap table -->
     <script src="${ctx!}/assets/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
@@ -159,7 +158,8 @@
 			        title: "操作",
 			        field: "empty",
                     formatter: function (value, row, index) {
-                    	var operateHtml = '<@shiro.hasPermission name="system:stock:add"><button class="btn btn-primary btn-xs" type="button" onclick="edit(\''+row.id+'\')"><i class="fa fa-plus"></i>&nbsp;添加出货明细</button> &nbsp;</@shiro.hasPermission>';
+                    	var operateHtml = '<@shiro.hasPermission name="system:stock:add"><button class="btn btn-primary btn-xs" type="button" onclick="addDetail(\''+row.id+'\')"><i class="fa fa-plus"></i>&nbsp;添加出货明细</button> &nbsp;</@shiro.hasPermission>';
+                    	operateHtml = operateHtml + '<@shiro.hasPermission name="system:stock:edit"><button class="btn btn-primary btn-xs" type="button" onclick="edit(\''+row.id+'\')"><i class="fa fa-edit"></i>&nbsp;修改</button> &nbsp;</@shiro.hasPermission>';
                     	operateHtml = operateHtml + '<@shiro.hasPermission name="system:stock:deleteBatch"><button class="btn btn-danger btn-xs" type="button" onclick="del(\''+row.id+'\')"><i class="fa fa-remove"></i>&nbsp;删除</button> &nbsp;</@shiro.hasPermission>';
                         return operateHtml;
                     }
@@ -167,7 +167,7 @@
 			});
         });
         
-        function edit(id){
+        function addDetail(id){
         	sessionStorage.setItem("pId", id);
         	layer.open({
         	      type: 2,
@@ -179,6 +179,19 @@
         	      end: function(index){
         	    	  $('#table_list').bootstrapTable("refresh");
         	    	  $('#table_list_b').bootstrapTable("refresh");
+       	    	  }
+        	    });
+        }
+        function edit(id){
+        	layer.open({
+        	      type: 2,
+        	      title: '存货修改',
+        	      shadeClose: true,
+        	      shade: false,
+        	      area: ['800px', '500px'],
+        	      content: '${ctx!}/admin/stock/edit/'+id,
+        	      end: function(index){
+        	    	  $('#table_list').bootstrapTable("refresh");
        	    	  }
         	    });
         }
@@ -204,6 +217,7 @@
     	    		   success: function(msg){
 	 	   	    			layer.msg(msg.message, {time: 2000},function(){
 	 	   	    				$('#table_list').bootstrapTable("refresh");
+	 	   	    				$('#table_list_b').bootstrapTable("refresh");
 	 	   	    				layer.close(index);
 	 	   					});
     	    		   }
@@ -273,9 +287,47 @@
 			    },{
 			        title: "退回数量",
 			        field: "returnQuantity"
+			    },{
+			        title: "操作",
+			        field: "empty",
+                    formatter: function (value, row, index) {
+                    	var operateHtml1 = '<@shiro.hasPermission name="system:stock:edit"><button class="btn btn-primary btn-xs" type="button" onclick="editDetail(\''+row.id+'\')"><i class="fa fa-edit"></i>&nbsp;修改</button> &nbsp;</@shiro.hasPermission>';
+                    	operateHtml1 = operateHtml1 + '<@shiro.hasPermission name="system:stock:deleteBatch"><button class="btn btn-danger btn-xs" type="button" onclick="delDetail(\''+row.id+'\')"><i class="fa fa-remove"></i>&nbsp;删除</button> &nbsp;</@shiro.hasPermission>';
+                        return operateHtml1;
+                    }
 			    }]
 			});
-	    }
+        }
+		function editDetail(id){
+        	layer.open({
+        	      type: 2,
+        	      title: '存货修改',
+        	      shadeClose: true,
+        	      shade: false,
+        	      area: ['800px', '500px'],
+        	      content: '${ctx!}/admin/stockDetail/edit/'+id,
+        	      end: function(index){
+        	    	  $('#table_list').bootstrapTable("refresh");
+        	    	  $('#table_list_b').bootstrapTable("refresh");
+       	    	  }
+        	    });
+        }
+        function delDetail(id){
+        	layer.confirm('确定删除吗?', {icon: 4, title:'提示'}, function(index){
+        		$.ajax({
+    	    		   type: "POST",
+    	    		   dataType: "json",
+    	    		   url: "${ctx!}/admin/stockDetail/delete/" + id,
+    	    		   success: function(msg){
+	 	   	    			layer.msg(msg.message, {time: 2000},function(){
+	 	   	    				$('#table_list').bootstrapTable("refresh");
+	 	   	    				$('#table_list_b').bootstrapTable("refresh");
+	 	   	    				layer.close(index);
+	 	   					});
+    	    		   }
+    	    	});
+       		});
+        }
     </script>
 
     

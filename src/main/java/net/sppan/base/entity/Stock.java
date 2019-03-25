@@ -62,12 +62,12 @@ public class Stock extends BaseEntity {
 	/**
 	 * 总数量
 	 */
-	private int totalQuantity;
+	private String totalQuantity;
 
 	/**
 	 * 库存数量
 	 */
-	private int inventoryQuantity;
+	private String inventoryQuantity;
 
 	/**
 	 * 备注
@@ -125,19 +125,19 @@ public class Stock extends BaseEntity {
 		this.batchNumber = batchNumber;
 	}
 
-	public Integer getTotalQuantity() {
+	public String getTotalQuantity() {
 		return totalQuantity;
 	}
 
-	public void setTotalQuantity(Integer totalQuantity) {
+	public void setTotalQuantity(String totalQuantity) {
 		this.totalQuantity = totalQuantity;
 	}
 
-	public Integer getInventoryQuantity() {
+	public String getInventoryQuantity() {
 		return inventoryQuantity;
 	}
 
-	public void setInventoryQuantity(Integer inventoryQuantity) {
+	public void setInventoryQuantity(String inventoryQuantity) {
 		this.inventoryQuantity = inventoryQuantity;
 	}
 

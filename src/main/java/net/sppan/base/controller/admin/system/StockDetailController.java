@@ -66,7 +66,7 @@ public class StockDetailController extends BaseController {
 	@ResponseBody
 	public JsonResult delete(@PathVariable Integer id,ModelMap map) {
 		try {
-			stockDetailService.delete(id);
+			stockDetailService.deleteStockDetail(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JsonResult.failure(e.getMessage());
